@@ -18,9 +18,9 @@ export REPO_SIZE_FILE=/tmp/reposize.$RANDOM
 "$yum_sync" "${UPSTREAM}/el/@{os_ver}/@{arch}" @rhel-current gitlab-runner x86_64,aarch64 "el@{os_ver}-@{arch}" "$YUM_PATH"
 echo "YUM finished"
 
-"$apt_sync" --delete "${UPSTREAM}/ubuntu" @ubuntu-lts main amd64,i386,arm64 "$UBUNTU_PATH"
+"$apt_sync" --delete "${UPSTREAM}/ubuntu" @ubuntu-lts main amd64,i386,arm64,all "$UBUNTU_PATH"
 echo "Ubuntu finished"
-"$apt_sync" --delete "${UPSTREAM}/debian" @debian-current main amd64,i386,arm64,armhf "$DEBIAN_PATH"
+"$apt_sync" --delete "${UPSTREAM}/debian" @debian-current main amd64,i386,arm64,armhf,all "$DEBIAN_PATH"
 echo "Debian finished"
 
 "${_here}/helpers/size-sum.sh" $REPO_SIZE_FILE --rm
